@@ -38,8 +38,8 @@ public class BinarySearch {
 			int hi1 = me;
 		}
 		if(me<value) {
-			int lo1=me;
-			int hi1=hi;
+			int lo1= me;
+			int hi1= hi;
 		}
 		List<int> lista1 = list.subList( lo1,  hi1);
 		return binarySearch(lista1 , lo1 , hi1 , value);
