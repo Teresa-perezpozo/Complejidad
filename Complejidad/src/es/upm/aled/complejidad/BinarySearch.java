@@ -4,7 +4,7 @@ public class BinarySearch {
 
 	private static int binarySearch(int[] list, int lo, int hi, int value) {
 		// DEBERES: ¿Implementarlo con recursividad?
-		do {
+		/*do {
 			int me = (int) Math.floor(lo + (hi-lo)/2);
 			int v = list[me]; // O(1)
 			if (v == value) {
@@ -19,7 +19,24 @@ public class BinarySearch {
 		} while (lo<hi);
 		return -1;
 	}
-	
+	*/
+		//MÉTODO RECURSIVO
+		
+		//casos base
+		if (hi==value) {
+			return hi;
+		}
+		if(lo==value) {
+			return lo;
+		}
+			
+		//paso recursivo	
+		int me = (int) Math.floor(lo + (hi-lo)/2);
+		List<int> lista1 = list.subList( lo,  hi);
+		binarySearch(lista1 , lo1 , hi1 , value);
+		
+		
+		
 	// Método facade
 	public static int binarySearch(int[] list, int value) {
 		return binarySearch(list, 0, list.length, value);
