@@ -21,30 +21,27 @@ public class BinarySearch {
 	}
 	*/
 		//MÉTODO RECURSIVO
-		
-		//casos base
-		if (hi==value) {
-			return hi;
-		}
-		if(lo==value) {
-			return lo;
-		}
+	
 			
-		//paso recursivo	
-			
+//caso base 			
 		int me = (int) Math.floor(lo + (hi-lo)/2);
-		if(me>value) {
-			int lo1 = lo;
-			int hi1 = me;
+		 if (list[me] == value) {
+	            return me;
+		 }
+		 
+		 
+		 
+//paso recursivo		 
+		if(list[me] < value) {
+            return binarySearch(list, me + 1, hi, value);
+
 		}
-		if(me<value) {
-			int lo1= me;
-			int hi1= hi;
+		else {
+            return binarySearch(list, lo, me - 1, value);
+
 		}
-		List<int> lista1 = list.subList( lo1,  hi1);
-		return binarySearch(lista1 , lo1 , hi1 , value);
 		
-		
+	}
 		
 	// Método facade
 	public static int binarySearch(int[] list, int value) {
