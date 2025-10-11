@@ -31,9 +31,18 @@ public class BinarySearch {
 		}
 			
 		//paso recursivo	
+			
 		int me = (int) Math.floor(lo + (hi-lo)/2);
-		List<int> lista1 = list.subList( lo,  hi);
-		binarySearch(lista1 , lo1 , hi1 , value);
+		if(me>value) {
+			int lo1 = lo;
+			int hi1 = me;
+		}
+		if(me<value) {
+			int lo1=me;
+			int hi1=hi;
+		}
+		List<int> lista1 = list.subList( lo1,  hi1);
+		return binarySearch(lista1 , lo1 , hi1 , value);
 		
 		
 		
