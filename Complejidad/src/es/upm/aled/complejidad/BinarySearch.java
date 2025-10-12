@@ -32,8 +32,8 @@ public class BinarySearch {
 		 
 		 
 //paso recursivo		 
-		if(list[me] < value) {
-            return binarySearch(list, me + 1, hi, value);
+		if(list[me] < value) {//importante que tengo que acceder al valor y no quedarme en la posición!!!
+            return binarySearch(list, me + 1, hi, value);//DUDA, donde tengo que poner el igual
 
 		}
 		else {
