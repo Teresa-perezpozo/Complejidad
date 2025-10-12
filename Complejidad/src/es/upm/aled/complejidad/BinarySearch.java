@@ -33,11 +33,11 @@ public class BinarySearch {
 		 
 //paso recursivo		 
 		if(list[me] < value) {//importante que tengo que acceder al valor y no quedarme en la posición!!!
-            return binarySearch(list, me + 1, hi, value);//DUDA, donde tengo que poner el igual
+            return binarySearch(list, me + 1, hi, value);
 
 		}
 		else {
-            return binarySearch(list, lo, me - 1, value);
+            return binarySearch(list, lo, me - 1, value);//es importante el menos uno es en la posición no en eel valor
 
 		}
 		
@@ -46,7 +46,8 @@ public class BinarySearch {
 	// Método facade
 	public static int binarySearch(int[] list, int value) {
 		return binarySearch(list, 0, list.length, value);
-	}
+	}//el método fachada es para que realmente el usuario no tenga que lidiar con cosas complejas
+	//además el metodo recursivo siempre tiene que devolver algo para realimentarse y si queremos que el método realmente no devuelva nada o devuelva un tipo disitnto, tenemos que hacer un método fachada
 	
 	public static void main(String[] args) {
 		// Array ORDENADO
