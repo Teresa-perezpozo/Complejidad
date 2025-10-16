@@ -1,11 +1,12 @@
 package es.upm.aled.complejidad;
 
 public class bubbleSort {
+	//probar de manera recursvia
 	private static void bubbleSort(int[] list) {
 		for(int i = 0;i<list.length;i++) {//por cada vez qie se ejecute ese for, se va a ejecutar todo el array entero
 			for( int j = 0;j<list.length-1-i; j++) {//se para en menos uno pq como comparo uon con el siguiente me daría error por aout bound 
 				//si es mayor que el sigiente lo cambio
-				if (list[j]> list[j+1]) {
+				if (list[j]> list[j+1]) {//es menor en el primer for pq no incluyo el propio valor
 					int temp= list[j];
 					list[j]= list[j+1];
 					list[j+1]=temp;
