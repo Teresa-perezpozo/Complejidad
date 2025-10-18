@@ -12,7 +12,6 @@ public class LinearSearch {
 				return i;
 			}
 		}
-		// No estaba
 		return -1;
 	}
 }
