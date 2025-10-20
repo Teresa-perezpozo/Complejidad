@@ -9,7 +9,7 @@ public class LinearSearch {
 		for (int i = 0; i < lista.length; i++) {
 			// ¿Son iguales?
 			if (lista[i] == valor) {
-				return i;
+				return si;
 			}
 		}
 		return -1;
