@@ -9,7 +9,7 @@ Problema: Dada una lista de números enteros pequeños y desordenados, implement
  devuelve su índice; si no, devuelve -1.
  */
 	public int busquedaNum(int [] n, int indice, int numero) {
-		if(n.length > indice) return -1;
+		if(n.length < indice) return -1;
 		
 		
 		if(n[indice]==numero) return indice;
@@ -22,5 +22,6 @@ Problema: Dada una lista de números enteros pequeños y desordenados, implement
 		e1BusquedaLineal e = new e1BusquedaLineal();
 		int[] a = {9,0,9,0,1,1,2};
 		int resultado = e.fachadaBusqueda(a, 9);
+		System.out.println(resultado);
 	}
 }
