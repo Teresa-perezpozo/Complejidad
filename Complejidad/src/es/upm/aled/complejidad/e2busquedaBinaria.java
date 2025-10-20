@@ -9,12 +9,15 @@ public class e2busquedaBinaria {
 	 * -1.
 	 */
 	public int busqusquedaBinaria(int []n, int hi, int lo, int num) {
-		int me = hi-lo/2;
-		if(me == num) return me;
-		if(num<me) return busqusquedaBinaria(n, me, lo, num);
-		if(num>me)return busqusquedaBinaria(n, me, hi, num);
+		int me = lo + (hi - lo) / 2;
+		if (lo > hi) {
+            return -1;
+        }
+		if(n[me] == num) return me;
+		if(num<n[me]) return busqusquedaBinaria(n, me-1, lo, num);
+		if(num>n[me])return busqusquedaBinaria(n, me+1, hi, num);
 		
-		else		return -1;
+		else return -1;
 	}
 	public int fachadaBusquedaBinaria(int [] n, int num) {
 		int hi=n.length;
@@ -24,7 +27,9 @@ public class e2busquedaBinaria {
 	
 	public static void main(String[] args) {
 		e2busquedaBinaria e = new e2busquedaBinaria();
-		int resultado =e.busqusquedaBinaria(a, , 0, 0)
+		int[] a = {1,2,3,4,6,7,9};
+		int resultado =e.fachadaBusquedaBinaria(a, 8);
+		System.out.println(resultado);
 	}
 
 }
