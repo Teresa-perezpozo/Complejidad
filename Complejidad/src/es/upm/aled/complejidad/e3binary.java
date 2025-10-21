@@ -10,7 +10,8 @@ public class e3binary {
 	 */
 	public int busquedaNum (int[] n, int b, int lo, int hi) {
 		int me = lo + (hi-lo)/2;
-		if(n[me]<b) return busquedaNum(n,b,me+1,hi);
+		if (lo >= hi) return lo;
+		if(n[me]<b) return busquedaNum(n,b,me,hi);
 		if(n[me]>b) return n[me];
 		else return-1;
 	}
