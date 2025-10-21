@@ -12,7 +12,7 @@ public class e4bubble {
 	 * 
 	 * Salida: [11, 12, 22, 25, 34, 64, 90]
 	 */
-	public static void BubbleSort(int [] arr ) {
+	public int[]  BubbleSort(int [] arr ) {
 		int n = arr.length;
 		for(int i = 0;i<n-1;i++) {
 			for(int j = 0;j<n-1-i;j++) {
@@ -23,16 +23,18 @@ public class e4bubble {
 				}
 				}
 					
-			}
-		for(int i =0;i<arr.length;i++) {
-			System.out.println(arr[i]);
+			}return arr;
+		
 		}
-	}
+	
 	
 	public static void main(String[] args) {
 		e4bubble a = new e4bubble();
 		int [] arr = {1,5,4,8,101,40,3};
-		a.BubbleSort(arr);
+		int[] resultado =a.BubbleSort(arr);
+		for(int i =0;i<arr.length;i++) {
+			System.out.println(arr[i]);
 		}
 
+}
 }

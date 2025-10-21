@@ -12,7 +12,7 @@ public class e3binary {
 		int me = lo + (hi-lo)/2;
 		if (lo >= hi) return lo;
 		if(n[me]<b) return busquedaNum(n,b,me,hi);
-		if(n[me]>b) return n[me];
+		if(n[me]>b) return n[me];	
 		else return-1;
 	}
 	public int fachadaBusquedaNum(int[] n, int b) {
