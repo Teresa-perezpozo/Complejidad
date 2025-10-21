@@ -27,7 +27,7 @@ public class e2busquedaBinaria {
 	
 	public static void main(String[] args) {
 		e2busquedaBinaria e = new e2busquedaBinaria();
-		int[] a = {1,2,3,4,6,7,9};
+		int[] a = {1,2, 3,4,6,7,9};
 		int resultado =e.fachadaBusquedaBinaria(a, 3);
 		System.out.println(resultado);
 	}
