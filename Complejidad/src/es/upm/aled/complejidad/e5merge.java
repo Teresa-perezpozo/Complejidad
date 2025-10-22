@@ -9,26 +9,23 @@ public class e5merge {
 	    int[] L = new int[n1];
 	    int[] R = new int[n2];
 
-	    // Copiar datos a los arrays temporales
 	    for (int i = 0; i < n1; ++i) L[i] = arr[l + i];
 	    for (int j = 0; j < n2; ++j) R[j] = arr[m + 1 + j];
 
-	    // 2. Unificar los arrays temporales de nuevo en arr[l..r]
-	    int i = 0, j = 0; // Punteros para L y R
-	    int k = l;        // Puntero para el array original
+	    int i = 0, j = 0; 
+	    int l = l;        
 
 	    while (i < n1 && j < n2) {
 	        if (L[i] <= R[j]) {
 	            arr[k] = L[i];
 	            i++;
 	        } else {
-	            arr[k] = R[j]; // Si el de R es menor, lo elegimos
+	            arr[k] = R[j]; 
 	            j++;
 	        }
 	        k++;
 	    }
 
-	    // 3. Copiar los elementos restantes de L[] o R[] (si quedan)
 	    while (i < n1) {
 	        arr[k] = L[i];
 	        i++;
