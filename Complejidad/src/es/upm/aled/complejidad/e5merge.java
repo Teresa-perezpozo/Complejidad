@@ -13,7 +13,7 @@ public class e5merge {
 	    for (int j = 0; j < n2; ++j) R[j] = arr[m + 1 + j];
 
 	    int i = 0, j = 0; 
-	    int l = l;        
+	    int k = l;        
 
 	    while (i < n1 && j < n2) {
 	        if (L[i] <= R[j]) {
@@ -68,7 +68,9 @@ public class e5merge {
 	
 	
 	public static void main(String[] args) {
+		int[] data = {38, 27, 43, 3, 9, 82, 10};
 
+        System.out.println("Array original: " + arr.toString(data));
 	}
 
 }
