@@ -41,6 +41,32 @@ public class e5merge {
 	    }
 	}
 	
+	public static void merge(int[] arr, int[] L, int[] R) {
+        int i = 0, j = 0, k = 0;
+
+        while (i < L.length && j < R.length) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++; 
+        }
+
+        while (i < L.length) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < R.length) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
 	
 	
 	
