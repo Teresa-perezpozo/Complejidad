@@ -18,7 +18,7 @@ public class BinarySearch {
 			}
 		} while (lo<hi);
 		return -1;
-	}
+	ss
 	*/
 		//MÉTODO RECURSIVO
 	
@@ -31,8 +31,7 @@ public class BinarySearch {
 		 
 		 
 		 
-//paso recursivo		 
-		if(list[me] < value) {//importante que tengo que acceder al valor y no quedarme en la posición!!!
+		if(list[me] < value) { //importante que tengo que acceder al valor y no quedarme en la posición!!!
             return binarySearch(list, me + 1, hi, value);
 
 		}
@@ -57,7 +56,7 @@ public class BinarySearch {
 	
 	public long calcularFactorial(int n) {
         if (n < 0) {
-            throw new IllegalArgumentException("El número debe ser no negativo para calcular el factorial.");
+            throw new IllegalArgumentException("factorial.");
         }
 
        
