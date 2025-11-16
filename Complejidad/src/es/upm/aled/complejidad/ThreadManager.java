@@ -3,6 +3,7 @@ package es.upm.aled.complejidad;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ThreadManager {
 	public static void main(String[] args) throws InterruptedException {
@@ -13,7 +14,7 @@ public class ThreadManager {
         ExecutorService executor = Executors.newFixedThreadPool(cores); 
         
         
-        int numEscritores = cores/2; 
+        int numEscritores = 10; 
         int numLectores = cores - numEscritores;
         
         System.out.println("Este ordenador tiene "+ cores + " cores.");
@@ -27,7 +28,7 @@ public class ThreadManager {
             executor.submit(() -> { 
                 for (int j = 0; j < 5; j++) { // Cada escritor realiza 5 operaciones
                     // 6. Usa la variable 'recursoCompartido' y el nombre 'name'
-                    recursoCompartido.escribirValor(name, 10); 
+                    recursoCompartido.cambiarValor(name); 
                     try {
                         Thread.sleep(100); // Pausa para simular trabajo
                     } catch (InterruptedException e) {
@@ -52,8 +53,9 @@ public class ThreadManager {
             });
         }
         
-        // 9. Cierre del pool fuera del método main
         executor.shutdown();
         executor.awaitTermination(60, TimeUnit.SECONDS); // Esperar a que terminen
+        System.out.println("\n--- Tareas Finalizadas ---");
+        System.out.println("Valor final del recurso compartido: " + recursoCompartido.leerValor("Main Thread"));
     }
 }

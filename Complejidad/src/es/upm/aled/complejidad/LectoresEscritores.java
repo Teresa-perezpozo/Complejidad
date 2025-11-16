@@ -6,9 +6,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class LectoresEscritores {
-	
-	int lectores =0;
-	int escritores =0;
+	private final Random rand = new Random();
+
 	int valor =0;
 	
 	private final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
@@ -34,7 +33,7 @@ public class LectoresEscritores {
 	public void cambiarValor(String n ) {
 	rwLock.writeLock().lock();
 	try {
-		valor = Random.nextInt(10000);
+		valor = rand.nextInt(10000);
 		System.out.println("el nuevo valor es " + valor + " y lo ha cambiado " + n);
 	}finally {
 		rwLock.writeLock().unlock();
