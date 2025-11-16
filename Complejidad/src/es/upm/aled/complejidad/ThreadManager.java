@@ -1,18 +1,59 @@
 package es.upm.aled.complejidad;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class ThreadManager {
 	public static void main(String[] args) throws InterruptedException {
-		int cores = Runtime.getRuntime().avaibleProcessors();
-		Exececutor service ex = Executor.newFixedThreadPool(cores);
-		LectoresEscritores compartido = new LecoresEscritores();
-		int numEscritores = cores%2;
-		int numLectores = cores-numEscritores;
-		
-		System.out.println(" este ordenador tiene "+ cores + " cores.");
-			
-		//ahora voy a asignaro todos los threads a sus labores
-		for (int i =0;i<numEscritores;i++) {
-			
-		}
-	}
+        // Asumiendo que esta clase existe y usa ReentrantReadWriteLock
+        LectoresEscritores recursoCompartido = new LectoresEscritores(); // 3. Renombrado
+
+        int cores = Runtime.getRuntime().availableProcessors();
+        ExecutorService executor = Executors.newFixedThreadPool(cores); 
+        
+        
+        int numEscritores = cores/2; 
+        int numLectores = cores - numEscritores;
+        
+        System.out.println("Este ordenador tiene "+ cores + " cores.");
+        System.out.println("Se asignarán " + numEscritores + " escritores y " + numLectores + " lectores.");
+            
+        //asigno a los escritores sus tareas
+        
+        for (int i = 0; i < numEscritores; i++) {
+            final String name = "Escritor-" + i;
+            // 5. Usa la variable 'executor' y el nombre de variable 'name'
+            executor.submit(() -> { 
+                for (int j = 0; j < 5; j++) { // Cada escritor realiza 5 operaciones
+                    // 6. Usa la variable 'recursoCompartido' y el nombre 'name'
+                    recursoCompartido.escribirValor(name, 10); 
+                    try {
+                        Thread.sleep(100); // Pausa para simular trabajo
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            }); // 7. Paréntesis y punto y coma faltantes aquí
+        }
+        
+        // --- Asignación de Lectores (Añadido para completar la lógica) ---
+        for (int i = 0; i < numLectores; i++) {
+            final String name = "Lector-" + i;
+            executor.submit(() -> { 
+                for (int j = 0; j < 20; j++) { // Cada lector realiza 20 operaciones
+                    recursoCompartido.leerValor(name); 
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            });
+        }
+        
+        // 9. Cierre del pool fuera del método main
+        executor.shutdown();
+        executor.awaitTermination(60, TimeUnit.SECONDS); // Esperar a que terminen
+    }
 }
