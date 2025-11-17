@@ -12,9 +12,9 @@ public class LectorEscritor2_2 {
     private final Random rand = new Random();
 
     // 1. Método para la HEBRA LECTORA: Lee AMBOS valores en orden aleatorio.
-    public void leerValores(String n) {
+    public void leerValores(String n) throws InterruptedException {
         boolean leerPrimeroValor1 = rand.nextBoolean();
-
+//de manera aleatoria leera primero el 1 y  luego el 2 y sino al revés
         try {
             if (leerPrimeroValor1) {
                 leerValorProtegido(n, 1); // Lee valor 1
@@ -28,8 +28,8 @@ public class LectorEscritor2_2 {
         }
     }
 
-    // 2. Helper para la Lectura Protegida (maneja locks y variables)
-    private void leerValorProtegido(String n, int numRecurso) {
+    // hago los locks aparte para que no sea tanto lio
+    private void leerValorProtegido(String n, int numRecurso) throws InterruptedException {
         ReentrantReadWriteLock.ReadLock lock;
         int valorLeido;
         String nombreValor;
@@ -51,7 +51,6 @@ public class LectorEscritor2_2 {
         	} else {
         	    valorLeido = valor2;
         	}            System.out.println(n + " está leyendo el " + nombreValor + " y es " + valorLeido);
-            // Simular trabajo
         } catch (InterruptedException e) {
              Thread.currentThread().interrupt();
         } finally {
@@ -70,7 +69,7 @@ public class LectorEscritor2_2 {
         }
     }
 
-    // 4. Helper para la Escritura Protegida (maneja locks y variables)
+//cambiador de números
     private void cambiarValorProtegido(String n, int numRecurso) {
         ReentrantReadWriteLock.WriteLock lock;
         String nombreValor;
