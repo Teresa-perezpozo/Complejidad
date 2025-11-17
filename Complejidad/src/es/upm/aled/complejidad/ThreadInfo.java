@@ -4,13 +4,13 @@ public class ThreadInfo {
 Thread thread;
 String name;
 String type;
-int priority;
+int Prioridad;
 
-public ThreadInfo(Thread thread,String name, String type, int priority){
+public ThreadInfo(Thread thread,String name, String type, int Prioridad){
 	this.thread = thread;
     this.name = name;
     this.type = type;
-    this.priority = priority;
+    this.Prioridad = Prioridad;
 	
 }
 public Thread getThread() {
@@ -26,7 +26,7 @@ public String getType() {
 }
 
 public int getPriority() {
-    return priority;
+    return Prioridad;
 }
 
 public boolean isReader() {
