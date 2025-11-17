@@ -7,56 +7,57 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class threadManager {
-	public static void main(String[] args) throws InterruptedException {
+public class threadManager2_2 {
+    public static void main(String[] args) throws InterruptedException {
 
-		LectorEscritor2_2 recursoCompartido = new LectorEscritor2_2(); 
+        LectorEscritor2_2 recursoCompartido = new LectorEscritor2_2(); 
 
         int cores = Runtime.getRuntime().availableProcessors();
-        ExecutorService executor = Executors.newFixedThreadPool(cores); 
-        
-        
-        int numEscritores = 10; 
-        int numLectores = cores - numEscritores;
-        
-        System.out.println("Este ordenador tiene "+ cores + " cores.");
+        ExecutorService executor = Executors.newFixedThreadPool(cores * 2); // Más pool para simular
+
+        int numEscritores = 5; 
+        int numLectores = 15; 
+
+        System.out.println("Este ordenador tiene " + cores + " cores.");
         System.out.println("Se asignarán " + numEscritores + " escritores y " + numLectores + " lectores.");
-            
-        //asigno a los escritores sus tareas
-        
+
+        // --- Asignación de Escritores ---
         for (int i = 0; i < numEscritores; i++) {
             final String name = "Escritor-" + i;
-            // 5. Usa la variable 'executor' y el nombre de variable 'name'
             executor.submit(() -> { 
-                    // 6. Usa la variable 'recursoCompartido' y el nombre 'name'
+                for (int j = 0; j < 5; j++) { // Repetir la tarea varias veces
+                    // CORRECCIÓN: Llamar al método que elige al azar qué valor escribir
                     recursoCompartido.cambiarValor(name); 
                     try {
-                        Thread.sleep(100); // Pausa para simular trabajo
+                        Thread.sleep(100); 
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
-                    
+                    }
                 }
-            }); // 7. Paréntesis y punto y coma faltantes aquí
+            });
         }
-        
-        // --- Asignación de Lectores (Añadido para completar la lógica) ---
+
+        // --- Asignación de Lectores ---
         for (int i = 0; i < numLectores; i++) {
             final String name = "Lector-" + i;
             executor.submit(() -> { 
-                    recursoCompartido.leerValore1(name); 
+                for (int j = 0; j < 10; j++) { // Repetir la tarea varias veces
+                    // CORRECCIÓN: Llamar al método que lee AMBOS valores en orden aleatorio
+                    recursoCompartido.leerValores(name); 
                     try {
                         Thread.sleep(50);
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
-                
+                }
             });
         }
-        
+
         executor.shutdown();
-        executor.awaitTermination(60, TimeUnit.SECONDS); // Esperar a que terminen
+        executor.awaitTermination(60, TimeUnit.SECONDS); 
+        
         System.out.println("\n--- Tareas Finalizadas ---");
-        System.out.println("Valor final del recurso compartido: " + recursoCompartido.leerValor("Main Thread"));
+        // CORRECCIÓN: Llamar al método final para leer ambos valores
+        System.out.println("Valor final de los recursos compartidos: " + recursoCompartido.leerValoresFinales());
     }
-}
 }
