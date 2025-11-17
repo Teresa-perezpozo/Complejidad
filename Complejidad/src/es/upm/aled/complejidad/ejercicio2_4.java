@@ -7,27 +7,21 @@ public class ejercicio2_4 {
 
 	
 	//creo el array de dos enteros
-	int[] buffer = new int[10] ;
 	int cores = RunTime.getRunTime().avaibleProcessors();
 	ExecutorService executor = 	Executor.newFixedThreadPool(cores);
 	int indexArray =0;
 	String n ;
 	
-	public synchronized void setValue(int value, String n ) {
-		if(indexArray<10){
-			buffer[indexArray]=value;
-			indexArray++;
-			System.out.println(" la hebra " + n +" ha introducido el número " + value);
-		}else {
-		System.out.println(" el array está lleno ");
-		}
-	}
+	
 		public synchronized int leerValue(String n ) {
-			
+			if(buffer.length ==0) {
+			wait();
+			}else {
 			return buffer[indexArray];
 			System.out.println(" la hebra " + n +" ha leido y borrado el número " + buffer[indexArray]);
-			buffer[indexArray]=[];
-			
+			buffer[indexArray].clear();
+			indexArray--;
+			}
 		}
 	
 	
