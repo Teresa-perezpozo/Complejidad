@@ -7,10 +7,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class ThreadManager {
+public class threadManager {
 	public static void main(String[] args) throws InterruptedException {
-        // Asumiendo que esta clase existe y usa ReentrantReadWriteLock
-        LectorEscritor2_2 recursoCompartido = new LectorEscritor2_2(); 
+
+		LectorEscritor2_2 recursoCompartido = new LectorEscritor2_2(); 
 
         int cores = Runtime.getRuntime().availableProcessors();
         ExecutorService executor = Executors.newFixedThreadPool(cores); 
