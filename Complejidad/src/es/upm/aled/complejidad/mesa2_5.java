@@ -5,10 +5,12 @@ public class mesa2_5 {
 	//los tenedores , los creo y le saco get
 	private final tenedro2_5[] tenedores = new tenedro2_5[5];
 	
+	public mesa2_5 () {
 	for(int i =0;i<5;i++) {
-		tenedores[i] = new tenedro2_5;
+		tenedores[i] = new tenedro2_5();
 	}
-	public tenedro2_5 getTenedor(int hebra) {
-        return tenedores[hebra];
+	}
+	public tenedro2_5 getTenedor(int indice) {
+        return tenedores[indice];
     }
 }

@@ -5,6 +5,9 @@ package es.upm.aled.complejidad;
 //los tenedores , los creo y le saco get
 //finalmente haré la clase filósofo donde haré hebras por filósofos en vez de en grupos
 // por útltmio un lanzador dodne cree las 5 hebras
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class tenedro2_5 {
 	public final Lock lock = new ReentrantLock();
 }
