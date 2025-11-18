@@ -7,12 +7,12 @@
 		//finalmente haré la clase filósofo donde haré hebras por filósofos en vez de en grupos
 		//es decir, la clase runnable
 		
-		private final tenedro2_5 mesa;
-	    private final int numF; 
+		private final mesa2_5 mesa;
+		private final int numF; 
 	    private final int tenedorIzquierda;
 	    private final int tenedorDerecha;
 	
-		 public filosofo (tenedro2_5 mesa, int numF) {
+		 public filosofo (mesa2_5 mesa, int numF) {
 			 	this.mesa = mesa;
 		        this.numF = numF;
 		        
@@ -36,8 +36,8 @@
 	                int primero = Math.min(tenedorIzquierda, tenedorDerecha);
 	                int segundo = Math.max(tenedorIzquierda, tenedorDerecha);
 	                
-	                t1 = mesa2_5.getTenedor(primero); // Tenedor de menor índice
-	                t2 = mesa2_5.getTenedor(segundo); // Tenedor de mayor índice
+	                t1 = mesa.getTenedor(primero); // Tenedor de menor índice
+	                t2 = mesa.getTenedor(segundo); // Tenedor de mayor índice
 
 	                // 3. Agarrar Tenedores en orden
 	                t1.lock.lock(); 

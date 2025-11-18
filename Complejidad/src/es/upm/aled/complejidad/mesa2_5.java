@@ -3,8 +3,9 @@ package es.upm.aled.complejidad;
 public class mesa2_5 {
 	//luego tendré que hacer un monitor que en este caso será mesa, y contorlña el comportamiento
 	//los tenedores , los creo y le saco get
+	//entonces tenemos nuestro array de tenedores en la mesa
 	private final tenedro2_5[] tenedores = new tenedro2_5[5];
-	
+	//la única función q tiene la mesa es dar tenedores y crearlos
 	public mesa2_5 () {
 	for(int i =0;i<5;i++) {
 		tenedores[i] = new tenedro2_5();
