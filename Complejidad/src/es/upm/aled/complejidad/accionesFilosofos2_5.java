@@ -28,5 +28,7 @@ public class accionesFilosofos2_5 {
 	public synchronized void TerminoDeComer (String n ) {
 		comiendo = false;
 		System.out.println("los "+ n+ " han terminado de comer, estaba muy bueno");
+		notifyAll();
+
 	}
 }

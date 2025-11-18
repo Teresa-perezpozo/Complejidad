@@ -28,19 +28,19 @@ public class filosofos2_5 implements Runnable {
 
 	@Override
 	public void run () {
+		while(true) {
 		try {
-	while(true) {
 		filosofo.EmpiezoAComer(n);
 		System.out.println("los " + n + " están comiendo");
 		Thread.sleep(ThreadLocalRandom.current().nextInt(1,3));
 		filosofo.TerminoDeComer(n);
 		Thread.sleep(ThreadLocalRandom.current().nextInt(1,3));
-	}
-	}catch(InterruptedException e ) {
+		}catch(InterruptedException e ) {
 		
 		Thread.currentThread().interrupt();
 		
 	}
 }
 
+	}
 }
