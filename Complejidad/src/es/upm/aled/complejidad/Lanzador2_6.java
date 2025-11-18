@@ -4,8 +4,8 @@ public class Lanzador2_6 {
 
 	public static void main(String[] args) {
 
-	int  numCocineros = 3;
-	int  numCanibales = 8;
+	int  numCocineros = 1;
+	int  numCanibales = 10;
 	
 	System.out.println("--- Iniciando Simulación Lectores/Escritores ---");
     System.out.println("Configuración: " + numCocineros + " Lectores, " + numCanibales + " Escritores.\n");

@@ -8,7 +8,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 //además tengo que hacer una clase de caníbales donde ponga x cocineros y x canibales
 //también hay q 
 public class Marmita2_6 {
-private int[] hayaComida = new int[10];//vamos a poner primero para simplificar que hay 10 cucharones
 private int cucharones;
 private boolean cocineroLlamado = false;
 private final int CAPACIDAD_MAXIMA = 10;
@@ -39,8 +38,7 @@ public synchronized void comer(String n )throws InterruptedException {
 		cucharones--;
 		System.out.println(" el canibal " + n +" se ha comido 1 cucharón ");
 		
-		
-		}
+	}
 		
 		
 	
@@ -51,7 +49,6 @@ public synchronized void rellenar(String n ) throws InterruptedException{
         
     } System.out.println(">>> [COCINERO " + n + "] COMENZÓ a rellenar la marmita.");
     // Simular tiempo de relleno
-    Thread.sleep(1500); 
     cucharones = CAPACIDAD_MAXIMA;
     cocineroLlamado = false; // El cocinero termina su tarea de relleno
     System.out.println("<<< [COCINERO " + n + "] MARMITA LLENA (" + cucharones + "). Notificando caníbales.");

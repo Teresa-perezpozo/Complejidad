@@ -16,7 +16,7 @@ public class accionesCanibales implements Runnable {
 					System.out.println("el canibal número " + n +" está comiendo");
 					marmita1.comer(n);
 					Thread.sleep(100); //simulamos que come su puchero
-					
+					Thread.sleep(800);
 				}catch(InterruptedException e ) {
 					Thread.currentThread().interrupt();
 				}return;
