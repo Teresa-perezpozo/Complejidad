@@ -1,36 +1,38 @@
 package es.upm.aled.complejidad;
 
 public class monitor2_4 {
-	private final int capacidad = 10;
-	int[] buffer = new int[10];
-	private int indexArray = 0;
+	public static void main (String[] args) {
 
 
-	public synchronized void setValue(int value, String n) {
-		while (indexArray == capacidad) {
-			System.out.println(" el array está lleno ");
-			wait();
-		} 
-			buffer[indexArray] = value;
-			indexArray++;
-			System.out.println(" la hebra " + n + " ha introducido el número " + value);
-			notifyAll();
+
+		        
+		        // 1. Crear la única instancia del Monitor (el recurso compartido)
+		monitor2_4 monitor = new monitor2_4();
+
+		        // 2. Configurar el número de hebras (configurable por el usuario)
+		        int numProductores = 3; 
+		        int numConsumidores = 2;
+
+		        System.out.println("--- Iniciando Productor-Consumidor (Buffer Lineal) ---");
+		        System.out.println("Productores: " + numProductores + ", Consumidores: " + numConsumidores);
+
+		        // 3. Lanzar hebras productoras
+		        for (int i = 0; i < numProductores; i++) {
+		            // Se crea una nueva instancia de Thread que ejecutará el código de Productor.
+		            Thread productorThread = new Thread(new Productor(monitor), "Productor-" + (i + 1));
+		            // El método start() es esencial: le dice al SO que ejecute el run() en un nuevo hilo.
+		            productorThread.start(); 
+		        }
+
+		        // 4. Lanzar hebras consumidoras
+		        for (int i = 0; i < numConsumidores; i++) {
+		            // Se crea una nueva instancia de Thread que ejecutará el código de Consumidor.
+		            Thread consumidorThread = new Thread(new Consumidor(monitor), "Consumidor-" + (i + 1));
+		            // Inicia la ejecución concurrente
+		            consumidorThread.start();
+		        }
+		    }
 		}
 	}
-
-	public synchronized int leerValue(String n) {
-		while(indexArray==0) {
-		System.out.println("el array no teiene ningún valor que leer y eliminar ");
-		wait();
-		}
-		int value = buffer[0];
-		for(int i=0;i<indexArray;i++) {
-			buffer[i] = buffer[i+1];
-		}
-		indexArray--;
-		System.out.println(" la hebra " + n +" ha leido y eliminado el número " + value);
-		notifyAll();
-		return value;
-	}
-
+	
 }
