@@ -13,10 +13,10 @@ public class Estanquero implements Runnable{
 			try {
 			    while (true) {
 				System.out.println("el estanquero ofrece una papela ");
-				piti.fuamar(papela);				
+				Piti.fumar(papela);				
 				Thread.sleep(800); 
 				System.out.println("el estanquero ofrece tabaco ");
-				piti.fumar(tabaco);
+				Piti.fumar(tabaco);
 			    }
 			}catch(InterruptedException e ) {
 				Thread.currentThread().interrupt();

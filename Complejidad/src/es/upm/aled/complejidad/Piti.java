@@ -17,7 +17,7 @@ public class Piti {
 
 
 
-		public synchronized void fumar(String n )throws InterruptedException {
+		public synchronized void fumar( boolean papela, boolean tabaco,String n )throws InterruptedException {
 				
 			//si tengo las dos cosas, fumo
 			while(papela ==true&&tabaco ==true) {
@@ -28,7 +28,7 @@ public class Piti {
 					
 		            // 
 		            if (papela==true&&eleccion==0) {
-		                fumador.pedir(tabaco);
+		                Piti.fumar(tabaco);
 		                
 		            }if(papela==true&&eleccion==1) {
 		            	fumador.prestar(papela);

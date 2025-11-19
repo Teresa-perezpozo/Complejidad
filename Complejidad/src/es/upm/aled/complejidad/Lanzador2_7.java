@@ -14,7 +14,7 @@ public class Lanzador2_7 {
 		hebra1.start();
 		hebra2.start();
 		hebra3.start();
-		Thread hebra4 = new Thread(new Estanquero(true, true));//el estanquero empieza con las dos, el problema esq se lo fume el 
+		Thread hebra4 = new Thread(new Estanquero(true, true));//el estanquero empieza con las dos, el problema esq se lo fume el 	
 		hebra4.start();
 	}
 

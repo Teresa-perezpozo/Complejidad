@@ -10,17 +10,19 @@ public class Fumador implements Runnable {
 	// luego el último sería
 	private boolean papelas;
 	private boolean tabaco;
-
-	public Fumador(boolean papelas, boolean tabaco) {
+	private String n ;
+	
+	public Fumador(boolean papelas, boolean tabaco, String n) {
 		this.papelas = papelas;
 		this.tabaco = tabaco;
+		this.n = n;
 	}
 
 	@Override
 	public void run() {
 		try {
 			while (true) {
-			Fumador.fumar();
+			Piti.fumar(papelas, tabaco, n);
 			}
 
 		} catch (InterruptedException e) {
@@ -29,4 +31,6 @@ public class Fumador implements Runnable {
 		}
 
 	}
+	
+	
 }
