@@ -11,15 +11,17 @@ public class accionesCanibales implements Runnable {
 	
 		@Override
 		public void run() {
-			while(true) {
 				try {
+					 while (true) { 
 					System.out.println("el canibal número " + n +" está comiendo");
+	                Thread.sleep(500 + (int)(Math.random() * 1500));
 					marmita1.comer(n);
-					Thread.sleep(100); //simulamos que come su puchero
-					Thread.sleep(800);
+		            System.out.println("Caníbal " + n + " está satisfecho y deja de comer.");
+					 }
 				}catch(InterruptedException e ) {
 					Thread.currentThread().interrupt();
-				}return;
-			}
+				
+				
 		}
+}
 }

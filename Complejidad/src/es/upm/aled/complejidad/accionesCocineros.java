@@ -11,15 +11,15 @@ public class accionesCocineros implements Runnable{
 
 	@Override
 	public void run() {
-		while(true) {
 			try {
+			    while (true) {
 				System.out.println("el cocinero número " + n +" está cocinando");
 				marmita1.rellenar(n);				Thread.sleep(100); //simulamos que come su puchero
-				Thread.sleep(100);
 				Thread.sleep(800);
+			    }
 			}catch(InterruptedException e ) {
 				Thread.currentThread().interrupt();
-			}return;
-		}
+			}
+			}		
 	}
-}
+

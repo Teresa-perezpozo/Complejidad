@@ -45,14 +45,18 @@ public synchronized void comer(String n )throws InterruptedException {
 public synchronized void rellenar(String n ) throws InterruptedException{
 	while (!cocineroLlamado) {
         System.out.println("   [COCINERO " + n + "] Esperando ser llamado...");
+        notifyAll();
+
         wait();
-        
-    } System.out.println(">>> [COCINERO " + n + "] COMENZÓ a rellenar la marmita.");
+    } 
+	System.out.println(">>> [COCINERO " + n + "] COMENZÓ a rellenar la marmita.");
+    Thread.sleep(1000 + (int)(Math.random() * 2000)); // tarda en cocinar
+
     // Simular tiempo de relleno
     cucharones = CAPACIDAD_MAXIMA;
-    cocineroLlamado = false; // El cocinero termina su tarea de relleno
     System.out.println("<<< [COCINERO " + n + "] MARMITA LLENA (" + cucharones + "). Notificando caníbales.");
-    
+    cocineroLlamado = false; // El cocinero termina su tarea de relleno
+
     // Despertar a todos los caníbales que esperan para que puedan volver a comer
     notifyAll(); 
 }
