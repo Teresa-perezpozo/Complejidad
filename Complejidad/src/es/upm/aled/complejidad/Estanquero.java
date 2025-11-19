@@ -1,23 +1,21 @@
 package es.upm.aled.complejidad;
 
 public class Estanquero implements Runnable{
-	private boolean  papela;
-	private boolean tabaco;
-	public Estanquero(boolean papela, boolean tabaco) {
-		this.papela= papela;
-		this.tabaco = tabaco;
+	private Piti  piti;
+
+	
+	public Estanquero(Piti piti) {
+		this.piti= piti;
+		
 	}
 
 	@Override
 	public void run() {
 			try {
 			    while (true) {
-				System.out.println("el estanquero ofrece una papela ");
-				Piti.fumar(papela);				
-				Thread.sleep(800); 
-				System.out.println("el estanquero ofrece tabaco ");
-				Piti.fumar(tabaco);
-			    }
+			    	piti.depositarIngredientes();
+			    	Thread.sleep(300);//descanso un poco antes de volver a reponer
+			    	}
 			}catch(InterruptedException e ) {
 				Thread.currentThread().interrupt();
 			}

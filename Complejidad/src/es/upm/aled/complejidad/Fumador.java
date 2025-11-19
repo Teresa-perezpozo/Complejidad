@@ -8,21 +8,20 @@ public class Fumador implements Runnable {
 	// luego tendremos el lanzador donde crearemos cuatro hebras, tres fumadoras y
 	// otra estanquera
 	// luego el último sería
-	private boolean papelas;
-	private boolean tabaco;
-	private String n ;
 	
-	public Fumador(boolean papelas, boolean tabaco, String n) {
-		this.papelas = papelas;
-		this.tabaco = tabaco;
-		this.n = n;
-	}
-
+	private final Piti piti;
+	private String ingredienteFijo ;
+	
+	 public Fumador(Piti piti, String ingredienteFijo) {
+	        this.piti = piti;
+	        this.ingredienteFijo = ingredienteFijo;
+	    }
 	@Override
 	public void run() {
 		try {
 			while (true) {
-			Piti.fumar(papelas, tabaco, n);
+			piti.fumar(ingredienteFijo);//es MUY IMPORTANTE que aqui nos fumamos el objeto piti, no su clase Piti
+			Thread.sleep(300);//hay q parar un poco antes de intentar volver a fumar, par q puedan pasar cosas
 			}
 
 		} catch (InterruptedException e) {

@@ -3,18 +3,17 @@ package es.upm.aled.complejidad;
 public class Lanzador2_7 {
 
 	public static void main(String[] args) {
-
-		int numFumadores = 3;
-		int numEstanqueros = 1;
 		Piti piti = new Piti();
-		Thread hebra1 = new Thread(new Fumador(false, false));//los fumadores empiezan sin tabaco ni papelas
-		Thread hebra2 = new Thread(new Fumador(false, false));//los fumadores empiezan sin tabaco ni papelas
-		Thread hebra3 = new Thread(new Fumador(false, false));//los fumadores empiezan sin tabaco ni papelas
+		System.out.println("--- Iniciando Simulación Los Tres Fumadores ---");
 
+		
+		Thread hebra1 = new Thread(new Fumador(piti,  "Tabaco"), "Fumador-Tabaco");
+		Thread hebra2 = new Thread(new Fumador(piti, "Papel"), "Fumador-Papel");
+		Thread hebra3 = new Thread(new Fumador(piti, "Mechero"), "Fumador-mechero");
 		hebra1.start();
 		hebra2.start();
 		hebra3.start();
-		Thread hebra4 = new Thread(new Estanquero(true, true));//el estanquero empieza con las dos, el problema esq se lo fume el 	
+		Thread hebra4 = new Thread(new Estanquero(piti), "Estanquero");
 		hebra4.start();
 	}
 
