@@ -20,8 +20,9 @@ public class Fumador implements Runnable {
 	public void run() {
 		try {
 			while (true) {
+				System.out.println(" el fumador de "+ ingredienteFijo+" está fumando");
 			piti.fumar(ingredienteFijo);//es MUY IMPORTANTE que aqui nos fumamos el objeto piti, no su clase Piti
-			Thread.sleep(300);//hay q parar un poco antes de intentar volver a fumar, par q puedan pasar cosas
+			Thread.sleep(1000);//hay q parar un poco antes de intentar volver a fumar, par q puedan pasar cosas
 			}
 
 		} catch (InterruptedException e) {

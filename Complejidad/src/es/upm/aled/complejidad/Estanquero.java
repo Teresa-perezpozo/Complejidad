@@ -14,7 +14,7 @@ public class Estanquero implements Runnable{
 			try {
 			    while (true) {
 			    	piti.depositarIngredientes();
-			    	Thread.sleep(300);//descanso un poco antes de volver a reponer
+			    	Thread.sleep(100);			    	
 			    	}
 			}catch(InterruptedException e ) {
 				Thread.currentThread().interrupt();

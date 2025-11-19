@@ -8,7 +8,7 @@ public class Lanzador2_7 {
 
 		
 		Thread hebra1 = new Thread(new Fumador(piti,  "Tabaco"), "Fumador-Tabaco");
-		Thread hebra2 = new Thread(new Fumador(piti, "Papel"), "Fumador-Papel");
+		Thread hebra2 = new Thread(new Fumador(piti, "Papela"), "Fumador-Papela");
 		Thread hebra3 = new Thread(new Fumador(piti, "Mechero"), "Fumador-mechero");
 		hebra1.start();
 		hebra2.start();

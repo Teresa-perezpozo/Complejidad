@@ -40,8 +40,8 @@ public class Piti {
 			
 	            System.out.println("--- FUMADOR con " + fumadorIngrediente + " terminó. Avisando al Estanquero.");
                 notifyAll(); // Despierta al Estanquero para que ponga nuevos ingredientes
-                return; //para sacar del método
-					
+				//muy impotante NO PONER RETURN AQUI pq sino formas interbloqueo
+                //pq ya deja el tabaco y no quiere volver a fumar
 				}
 			//si no puede fumar espera
 			System.out.println("--- FUMADOR con " + fumadorIngrediente + " está esperando ingredientes.");
@@ -61,15 +61,20 @@ public synchronized void depositarIngredientes() throws InterruptedException {
         // 3. Depositar los ingredientes faltantes:
         if (eleccion == 0) {
             // Faltan Tabaco
+        	Thread.sleep(100);
             papela = true;
             mechero = true;
             System.out.println("<<< [ESTANQUERO] Puso Papelas y mechero (para el de Tabaco).");
         } else if (eleccion == 1) {
+        	Thread.sleep(100);
+
             // Faltan Papel
             tabaco = true;
             mechero = true;
             System.out.println("<<< [ESTANQUERO] Puso Tabaco y mechero (para el de Papel).");
         } else {
+        	Thread.sleep(100);
+
             // Faltan Cerillas
             tabaco = true;
             papela = true;
