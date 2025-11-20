@@ -65,7 +65,7 @@ public class monitorPelu {
         }
         
         
-        return false; // No debería llegar aquí, pero por si acaso
+        return false; 
     }
 	
 	 public synchronized void salirPeluqueria() {
