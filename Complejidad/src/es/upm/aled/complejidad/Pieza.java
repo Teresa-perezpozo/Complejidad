@@ -24,5 +24,21 @@ public class Pieza {
 		
 		return false;
 	}
+	public static boolean esPalindromo (String texto) {
+		
+		if(texto.length()<=1) {
+			return true;
+		}
+		 char primera = texto.charAt(0);
+	     char ultima = texto.charAt(texto.length() - 1);
+	        
+	        if (primera != ultima) {
+	            return false; // No son iguales, la recursión termina aquí con FALSE.
+	        }
+		
+	        String subcadenaInterna = texto.substring(1, texto.length() - 1);
+	        
+	        return esPalindromo(subcadenaInterna);
+	}
 
 }
