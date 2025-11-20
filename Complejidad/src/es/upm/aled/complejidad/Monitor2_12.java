@@ -1,5 +1,6 @@
 package es.upm.aled.complejidad;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Monitor2_12 {
@@ -15,39 +16,56 @@ public class Monitor2_12 {
 	int numPersonas;// numero de personas dentro, dentro son todos personas, no discernimos
 	int aforo = 50;
 	int aforoMedio = 35;
+	int aforoActual=50;
 	int limTemperatura = 30;
-	private List<String> numJovenes;// esta sería la cola basicamente
-	private List<String> numJubilados;// la voy a hacer de string con el nombre pero ralmente podría hacerla
+	private List<String> numJovenes= new LinkedList<>();// esta sería la cola basicamente
+	private List<String> numJubilados= new LinkedList<>();// la voy a hacer de string con el nombre pero ralmente podría hacerla
 	// de personas
 
-	public synchronized void entrarSala(Persona p) {
+	public synchronized void entrarSala(String nombre) {
+		numJovenes.add(nombre);
 		try {
-			while (temperatura < limTemperatura) {
-				if (numPersonas < aforo) {
-
-					numPersonas++;
-					numJovenes.remove(p);
+			if(temperatura<limTemperatura) {
+				aforoActual=aforo;
+					
+				}else {
+					aforoActual=aforoMedio;
 				}
-
-			}
-			// es decir si la temperatura si que supera el límite de 30º
-			if (numPersonas < aforoMedio) {// no sé si poner if o while
+			if(numPersonas<aforoActual) {
 				numPersonas++;
-				numJovenes.remove(p);
-			}
-			wait();
+				numJovenes.remove(nombre);
+			}else {
+				System.out.println(nombre+" esperando a entrar");
 
+			wait();
+			}
+			
+				
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
 	}
 
-	public synchronized void entrarSalaJubilados(Persona p) {
-		while (temperatura < limTemperatura) {
-			if (numPersonas < aforo) {
+	public synchronized void entrarSalaJubilados(String nombre) {
+		numJubilados.add(nombre);
+		try {
+			if(temperatura<limTemperatura) {
+				aforoActual=aforo;
+					
+				}else {
+					aforoActual=aforoMedio;
+				}
+			if(numPersonas<aforoActual) {
 				numPersonas++;
-				numJubilados.remove(p);
+				numJubilados.remove(nombre);
+			}else {
+				System.out.println(nombre+" esperando a entrar");
+			wait();
 			}
+			
+				
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
 		}
 	}
 
@@ -56,12 +74,15 @@ public class Monitor2_12 {
 		notifyAll();
 	}
 
-	public void synchronized notificarTemperatura (int temperatura) {
-		
+	public  synchronized void notificarTemperatura (int temperaturaCogida) {
+		temperatura =temperaturaCogida;
+		System.out.println("acabo de actualizar la temperatura y esta es"+ temperaturaCogida);
+		notifyAll();
 		
 
 	
 	}
+}
 //este método estaría de locos para no tener que crear dos hebras para personas jubildas y no
 //y ponerlo simplemente como atributo en cada una 
 //	public  synchronized void entrarSala (Persona p) {
@@ -96,4 +117,4 @@ public class Monitor2_12 {
 //	}
 //	
 
-}
+
