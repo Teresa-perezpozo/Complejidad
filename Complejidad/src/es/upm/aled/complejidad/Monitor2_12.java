@@ -1,75 +1,99 @@
 package es.upm.aled.complejidad;
 
-public class Monitor2_12 {
+import java.util.List;
 
-	
-	Random temperatura ;
-	int numPersonas;
+public class Monitor2_12 {
+//hay que hacer 4 hebras, en promer lugar la del monitor, que controla todas las prioridad,es temperaturas, 
+	// recursos compartidos, osea temperatura aforo, aforo medio...etc
+	// en segundo lugar haremos una clase de personas , con un random q me dirá si
+	// es jubilado o no
+	// por último hacermos un lanzador de hebras, a ser posible de manera aleatoria
+	// mi duda es si hacer entrar sala para jubilados o todos a la misma, si hago
+	// todos a la misma
+	// luego no tendría q hacer dos clases distintas para personas y jubilados??
+	int temperatura;
+	int numPersonas;// numero de personas dentro, dentro son todos personas, no discernimos
 	int aforo = 50;
 	int aforoMedio = 35;
 	int limTemperatura = 30;
-	
-	
-	public  synchronized void entrarSala () {
+	private List<String> numJovenes;// esta sería la cola basicamente
+	private List<String> numJubilados;// la voy a hacer de string con el nombre pero ralmente podría hacerla
+	// de personas
+
+	public synchronized void entrarSala(Persona p) {
 		try {
-		while(temperatura<limTemperatura) {
-			if(numPersonas<aforo) {
+			while (temperatura < limTemperatura) {
+				if (numPersonas < aforo) {
+
+					numPersonas++;
+					numJovenes.remove(p);
+				}
+
+			}
+			// es decir si la temperatura si que supera el límite de 30º
+			if (numPersonas < aforoMedio) {// no sé si poner if o while
 				numPersonas++;
-			}else {
-				wait();
+				numJovenes.remove(p);
+			}
+			wait();
+
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}
+	}
+
+	public synchronized void entrarSalaJubilados(Persona p) {
+		while (temperatura < limTemperatura) {
+			if (numPersonas < aforo) {
+				numPersonas++;
+				numJubilados.remove(p);
 			}
 		}
-		
-		//es decir si l atemperatura si que supera el límite de 30º
-		if(numeroPersonas<aforoMedio) {
-			numPersonas++;
-		}else {
-			wait();//les pongo a esperar a q salga otra persona
-		}
-		
-		
-	} catch (InterruptedException e) {
-        Thread.currentThread().interrupt();
-    }
 	}
-	
-	
-	
-	public  synchronized void entrarSalaJubilado () {
-		try {
-		while(temperatura<limTemperatura) {
-			if(numPersonas<aforo) {
-				numPersonas++;
-			}else {
-				wait();
-			}
-		}
-		
-		//es decir si l atemperatura si que supera el límite de 30º
-		if(numPersonas<aforoMedio) {
-			numPersonas++;
-		}else {
-			wait();//les pongo a esperar a q salga otra persona
-		}
-		
-		
-	} catch (InterruptedException e) {
-        Thread.currentThread().interrupt();
-    }
-	}
-	
+
 	public synchronized void salirSala() {
 		numPersonas--;
-		}
-	
+		notifyAll();
+	}
+
 	public void synchronized notificarTemperatura (int temperatura) {
-		Random rand = new Random(0,40);//mas  o menos temperatura media
 		
 		
 
 	
 	}
-
-
+//este método estaría de locos para no tener que crear dos hebras para personas jubildas y no
+//y ponerlo simplemente como atributo en cada una 
+//	public  synchronized void entrarSala (Persona p) {
+//		try {
+//		while(temperatura<limTemperatura) {
+//			if(numPersonas<aforo) {
+//				if(p.esJubilado) {//aqui ya damos poer hecho q haremos una clase de personas y ya discernimos denrto 
+//					numJubilados.remove(p);
+//					numPersonas++;
+//				}else {
+//				numPersonas++;
+//				numJovenes.remove(p);
+//			}
+//		}
+//		
+//		//es decir si la temperatura si que supera el límite de 30º
+//		}if(numPersonas<aforoMedio) {
+//			if(p.esJubilado) {//aqui ya damos poer hecho q haremos una clase de personas y ya discernimos denrto 
+//				numJubilados.remove(p);
+//				numPersonas++;
+//			}else {
+//			numPersonas++;
+//			numJovenes.remove(p);
+//		}
+//		
+//		}else {
+//			wait();
+//		}
+//	} catch (InterruptedException e) {
+//        Thread.currentThread().interrupt();
+//    }
+//	}
+//	
 
 }

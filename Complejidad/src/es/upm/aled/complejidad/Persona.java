@@ -1,31 +1,23 @@
 package es.upm.aled.complejidad;
 
-public class Persona {
+public class Persona implements Runnable{
  private String nombre;
- private int edad;
- private enum edad {joven, jubilado};
+ private Monitor2_12 monitor;
+public Persona (String nombre, Monitor2_12 monitor) {
+	this.nombre= nombre;
+	this.monitor=monitor;
+}
  
- public Persona (String nombre, int edad, enum edad) {
-	 this.nombre = nombre;
-	 this.edad = edad;
-	 this.cedad = edad;
-	 
-	 
- }
-  public void esJubilado(String nombre) {
-	  if(edad>65) {
-		  enum = jubilado;
-	  }else {
-		  enum = joven;
-	  }
-  }
-  public void personaentra (String persona) {
-	  persona.entrar();
-	  
-  }
-  public void personasale(String persona) {
-	  persona.salir();
-	  
-  }
+@Override
+public void run() {
+	try {
+		while(true) {
+			System.out.println("el joven" + nombre + " va a entrar al museo " );
+			monitor.entrarSala(null);
+			
+		}
+	}
+}
+
  
 }
