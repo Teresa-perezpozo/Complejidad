@@ -13,14 +13,16 @@ public Cliente(monitorPelu monitor, String nombre) {
 
 @Override
 public void run() {
-	try {
-		while(true) {
-			System.out.println("el cliente va a intentear cortarse el pelo");
-			monitor.cortarPelo(nombre);
-			
-		}
-	}catch(InterruptedException e ) {
-		Thread.currentThread().interrupt();
-	}
+    // El cliente intenta entrar
+    boolean esAtendido = monitor.cortarPelo(nombre);
+    
+    // Si ha conseguido sitio
+    if (esAtendido) {
+        // Simula el corte de pelo (mientras ocupa la silla)
+        monitor.simularCortePelo();
+        
+        // Libera la silla y se va
+        monitor.salirPeluqueria();
+    }
 }
 }
