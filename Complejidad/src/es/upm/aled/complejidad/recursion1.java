@@ -47,5 +47,8 @@ public class recursion1 {
 		}
 
 	}
+######S#
+#      #
+##E#####
 
 }
