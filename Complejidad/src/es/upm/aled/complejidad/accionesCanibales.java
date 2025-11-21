@@ -25,3 +25,8 @@ public class accionesCanibales implements Runnable {
 		}
 }
 }
+//EJERCICIO CLASE
+//int sum = 0;
+//for (int n = N; n > 0; n /= 2)
+//for (int i = 0; i < n; i++)
+//sum++;
