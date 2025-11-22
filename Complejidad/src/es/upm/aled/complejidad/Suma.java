@@ -36,18 +36,20 @@ public class Suma {
 		}
 		public void invertedLinkedList(Node node){
 
-			for(Node node : LinkedList)
-					if(node.next==null){break}
+			while (actual != null) {
+		        
+		        // 1. Guardar el puntero para NO perder el resto de la lista.
+		        siguiente = actual.siguiente; 
 
-				actual = this.node;
-				anterior = null;
-				siguiente = null;
-				
-				siguiente = actual.siguiente;
-				// 
-				anterior = actual;
-				actual  = siguiente;
-				return anterior;
+		        // 2. INVERSIÓN: El nodo actual ahora apunta hacia atrás.
+		        actual.siguiente = anterior; 
+
+		        // 3. AVANCE: Mover los punteros.
+		        anterior = actual;  // 'anterior' pasa a ser el nodo que acabamos de invertir (el nuevo 'head').
+		        actual = siguiente; // 'actual' pasa a ser el nodo que guardamos en el paso 1.
+		    }
+
+		    return anterior; // 'anterior' es la nueva cabeza.
 				
 		}
 		
