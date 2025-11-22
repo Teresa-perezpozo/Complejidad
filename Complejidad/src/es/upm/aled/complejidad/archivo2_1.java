@@ -186,7 +186,14 @@ public class Carpeta {
 			int solución =0;
 			
 			if(objetivo%1 ==0) {
+				int valor = objetivo%1;
 				solucion++;
+			}if(objetivo%2==0) {
+				solucion++;
+			}if(objetivo%5==0) {
+				solucion++;
+			}else {
+				contarFormasCambio(objetivo%1,)
 				
 			
 			
