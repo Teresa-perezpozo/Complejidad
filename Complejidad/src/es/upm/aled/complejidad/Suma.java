@@ -34,6 +34,22 @@ public class Suma {
 //		String descendientes = hijo.descendientes();
 //		misDescendientes = misDescendientes + descendientes + ", ";
 		}
+		public void invertedLinkedList(Node node){
+
+			for(Node node : LinkedList)
+					if(node.next==null){break}
+
+				actual = this.node;
+				anterior = null;
+				siguiente = null;
+				
+				siguiente = actual.siguiente;
+				// 
+				anterior = actual;
+				actual  = siguiente;
+				return anterior;
+				
+		}
 		
 	}
 	
