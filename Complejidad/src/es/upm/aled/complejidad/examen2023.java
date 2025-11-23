@@ -16,6 +16,12 @@ public Stop[] computerNearStops(Stop primera) {
 			}
 		}
 }
+	 int iz=0; int der=stops.length;
+	 int med=0;
+	 while (iz <= der) {
+	 med=(iz+der)/2;
+	 if (newDistance > StopServicesP3.distance(stops[med].getLocation().x,
+	 stops[med].getLocation().y, stop.getLocation().x, stop.getLocation().y))
 
 
 
