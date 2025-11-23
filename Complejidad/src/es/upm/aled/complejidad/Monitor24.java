@@ -1,19 +1,22 @@
 package es.upm.aled.complejidad;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Monitor24 {
-	int[] buffer = new int[10];
+	List <Integer> buffer = new ArrayList[10];
 	boolean escribiendo;
 	int contador=0;
+	int leedor=0;
 	Random random = new Random();
-	public Monitor24(int[] buffer, boolean escribiendo) {
+	public Monitor24(List<Integer>] buffer, boolean escribiendo) {
 		this.buffer=buffer;
 		this.escribiendo=escribiendo;
 	}
 	
 	public synchronized void accesoEscribir(String n )throws InterruptedException {
-		while(escribiendo) {
+		while(escribiendo||buffer.size()==10) {
 			wait();
 		}
 		escribiendo =true;
@@ -30,7 +33,7 @@ public class Monitor24 {
 		contador++;
 	}
 	public synchronized void accesoLeer(String n ) throws InterruptedException{
-		while(escribiendo) {
+		while(escribiendo||buffer.isEmpty()) {
 			wait();
 		}
 		escribiendo = true;
@@ -40,6 +43,8 @@ public class Monitor24 {
 		notifyAll();
 	}
 	public synchronized void leyendo(String n )throws InterruptedException{
-		
+		System.out.println(buffer[leedor]);
+		buffer.clear(leedor);
+		leedor ++;
 	}
 }
