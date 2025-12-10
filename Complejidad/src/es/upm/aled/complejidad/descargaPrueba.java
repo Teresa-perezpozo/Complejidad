@@ -37,6 +37,16 @@ try {
 			}
 	}
 }
+	public  void cambiarTitulo(String s) throws InterruptedException{
+		URL pagina = new URL(s);
+		fichBytes = pagina.openStream();
+		InputStramReader r1 = new InputStramReader(fichBytes);
+		BufferedReader fichTxt = new BufferedReader(r1);
+		String textoOriginal = "",linea;
+		while((linea=fich.txt.readLine())!=null) {
+			textoOriginal+=linea;S
+		}
+	}
 	public static void main(String[] args) {
 	   
 	    descargaPrueba dp = new descargaPrueba();
