@@ -7,11 +7,11 @@ import java.io.OutputStream;
 import java.net.URL;
 
 public class descargaPrueba {
-	public  void descargar() throws InterruptedException{
+	public  void descargar(String s) throws InterruptedException{
 InputStream entrada = null;
 OutputStream salida = null;
 try {
-	URL unaPagina = new URL ("https://concepto.de/montana/");
+	URL unaPagina = new URL (s);
 	entrada = unaPagina.openStream();
 	salida = new FileOutputStream("montaña.png");
 	byte buffer[]= new byte[4096];
@@ -27,17 +27,25 @@ try {
 			try {
 				entrada.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		if(salida!=null)
 			try {
 				salida.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}
 }
+	public static void main(String[] args) {
+	   
+	    descargaPrueba dp = new descargaPrueba();
+	    try {
+			dp.descargar("https://www.istockphoto.com/es/foto/hombre-en-piedra-en-la-colina-y-hermosas-monta%C3%B1as-en-bruma-en-la-colorida-puesta-de-gm1443409611-482395177");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
 
 }
