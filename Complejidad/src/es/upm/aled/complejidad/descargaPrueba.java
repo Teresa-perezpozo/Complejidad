@@ -13,7 +13,7 @@ OutputStream salida = null;
 try {
 	URL unaPagina = new URL (s);
 	entrada = unaPagina.openStream();
-	salida = new FileOutputStream("montaña.png");
+	salida = new FileOutputStream("C:\\Users\\Teresa\\Desktop\\pagina_descargada.html");
 	byte buffer[]= new byte[4096];
 	while(entrada.read(buffer)!=-1) {
 		salida.write(buffer);
@@ -41,7 +41,7 @@ try {
 	   
 	    descargaPrueba dp = new descargaPrueba();
 	    try {
-			dp.descargar("https://www.istockphoto.com/es/foto/hombre-en-piedra-en-la-colina-y-hermosas-monta%C3%B1as-en-bruma-en-la-colorida-puesta-de-gm1443409611-482395177");
+			dp.descargar("https://concepto.de/montana/");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
