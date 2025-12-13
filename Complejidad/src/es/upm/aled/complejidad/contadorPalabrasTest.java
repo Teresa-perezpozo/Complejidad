@@ -1,9 +1,11 @@
-package import java.io.BufferedReader;
+package es.upm.aled.complejidad;
+
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ContadorPalabrasTest {
+public class contadorPalabrasTest {
     public static void main(String[] args) {
         try {
             // URL del recurso
@@ -13,15 +15,15 @@ public class ContadorPalabrasTest {
 
             // Leer la respuesta
             BufferedReader in = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
-            StringBuilder contenido = new StringBuilder();
             String linea;
+            String contenido ="";
             while ((linea = in.readLine()) != null) {
-                contenido.append(linea).append(" ");
+                contenido +=linea+"";
             }
             in.close();
 
             // Contar palabras
-            String texto = contenido.toString().trim();
+            String texto = contenido.trim();
             if (texto.isEmpty()) {
                 System.out.println("Número de palabras: 0");
             } else {
